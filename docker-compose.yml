@@ -13,3 +13,25 @@ services:
 
     command: >
       sh -c "uvicorn main:app --reload --port 5000"
+
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=dev
+      - DB_USER=devuser
+      - DB_PASSWORD=v3rys3cure
+    depends_on:
+      - db
+
+  db:
+    image: postgres:16-alpine
+    volumes:
+      - dev-db-data:/var/lib/postgresql/data
+      - ./db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=dev
+      - POSTGRES_USER=devuser
+      - POSTGRES_PASSWORD=v3rys3cure
+
+volumes:
+  dev-db-data:
