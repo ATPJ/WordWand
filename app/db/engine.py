@@ -16,9 +16,9 @@ db_conf = {
     "db_name": os.environ.get("DB_NAME")
 }
 
-URL = f"postgresql+psycopg2://{db_conf['db_user']}:{db_conf['db_password']}@ \
-                              {db_conf['host']}:{db_conf['port']} \
-                             /{db_conf['db_name']}"
+URL = f"postgresql+psycopg2://{db_conf['db_user']}:{db_conf['db_password']}@"\
+                            f"{db_conf['host']}:{db_conf['port']}"\
+                            f"/{db_conf['db_name']}"
 
 engine = create_engine(URL)
 
